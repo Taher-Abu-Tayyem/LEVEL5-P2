@@ -46,6 +46,6 @@ const myList = [
       }
       }>Change Theme</Button>
       </List>
-    </Box> 
+    </Box>
   )
 }
