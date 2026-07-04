@@ -127,8 +127,7 @@ export default function AppBarr() {
   );
 
   return (
-<Box>
-    <AppBar position="static">
+    <AppBar position="sticky">
           <Toolbar>
             <IconButton
               size="large"
@@ -204,9 +203,9 @@ export default function AppBarr() {
               </IconButton>
             </Box>
           </Toolbar>
-        </AppBar>
-          {renderMobileMenu}
+            {renderMobileMenu}
           {renderMenu}
-</Box>
+        </AppBar>
+        
   )
 }

@@ -32,7 +32,7 @@ function App() {
 
 <Stack sx={{flexDirection: "row"}}>
   <MyList theme={theme} setMyMode={setMyMode}/>
-    <Typography sx={{flexGrow: "10"}} className="border" variant="h6">box2</Typography>
+    <Typography sx={{flexGrow: "10", height:"1000px"}} className="border" variant="h6">box2</Typography>
   <Typography sx={{flexGrow: "2"}} className="border" variant="h6">box3</Typography>
 </Stack>
 

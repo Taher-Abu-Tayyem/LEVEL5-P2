@@ -22,8 +22,8 @@ const myList = [
     {title:"Setting", icon:<TuneIcon/> },
   ];
   return (
-    <Box sx={{flexGrow: "1"}} className="border" >
-      <List>
+    <Box sx={{flexGrow: "1.2", display:{xs:"none" , md:"block"}}} className="border" >
+      <List sx={{position:"fixed"}}>
         {myList.map((item) => {
           return(
                <ListItem key={item.title} disablePadding>
