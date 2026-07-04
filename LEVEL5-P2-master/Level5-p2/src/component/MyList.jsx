@@ -1,19 +1,13 @@
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/Inbox';
+import { Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import GroupsIcon from '@mui/icons-material/Groups';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import TuneIcon from '@mui/icons-material/Tune';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import { Button } from '@mui/material';
-export default function MyList({theme, setMyMode}) {
-const myList = [
+import { DarkMode, LightMode } from "@mui/icons-material";
+export default function MyList({setMyMode, theme}) {
+  const myList = [
     {title:"Home", icon:<HomeIcon/> },
     {title:"Profile", icon:<AccountBoxIcon/> },
     {title:"Pages", icon:<ContactPageIcon/> },
@@ -22,11 +16,11 @@ const myList = [
     {title:"Setting", icon:<TuneIcon/> },
   ];
   return (
-    <Box sx={{flexGrow: "1.2", display:{xs:"none" , md:"block"}}} className="border" >
+    <Box sx={{bgcolor: theme.palette.listColor.main, flexGrow:"1", display:{xs:"none", md:"block"}}} >
       <List sx={{position:"fixed"}}>
         {myList.map((item) => {
           return(
-               <ListItem key={item.title} disablePadding>
+  <ListItem key={item.title} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {item.icon}
@@ -37,14 +31,27 @@ const myList = [
           )
         }
         )}
-          <Button variant="text" color="primary"
-      onClick={() => {
-          localStorage.setItem("currentMode",
+      
+          <ListItem>
+        <ListItemIcon>
+          {theme.palette.mode === "dark"? <DarkMode /> : <LightMode/>}
+        </ListItemIcon>
+        <ListItemText primary={theme.palette.mode}/>
+        <Switch
+          edge="end"
+          onChange={() => {
+              localStorage.setItem("currentMode",
                 theme.palette.mode === "light"? "dark" : "light"
               )
               setMyMode(theme.palette.mode === "light" ? "dark" : "light");
-      }
-      }>Change Theme</Button>
+          }
+          }
+          inputProps={{
+            'aria-labelledby': 'switch-list-label-wifi',
+          }}
+        />
+      </ListItem>
+
       </List>
     </Box>
   )
